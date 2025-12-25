@@ -67,7 +67,42 @@ export const getCoachResponse = (userMessage: string): string => {
   if (lowerMessage.includes('thank')) {
     return "You're very welcome! Remember, I'm always here to support your journey. Now go make today count! 🔥";
   }
+
+  // Fitness & Body Building
+  if (lowerMessage.includes('body') || lowerMessage.includes('muscle') || lowerMessage.includes('gym') || lowerMessage.includes('workout') || lowerMessage.includes('exercise') || lowerMessage.includes('fit')) {
+    return "💪 Building your body is all about consistency! Here's my advice:\n\n1. **Start with basics** - Push-ups, squats, planks daily\n2. **Progressive overload** - Increase reps/weight weekly\n3. **Protein intake** - Eat protein with every meal\n4. **Sleep 7-8 hours** - Muscles grow during rest\n5. **Stay hydrated** - 3-4 liters water daily\n\nAdd 'Workout' as a daily habit in your tasks. Small daily efforts = massive transformation! 🔥";
+  }
+
+  // Weight Loss
+  if (lowerMessage.includes('weight') || lowerMessage.includes('fat') || lowerMessage.includes('slim') || lowerMessage.includes('diet')) {
+    return "🎯 Weight management is 80% nutrition, 20% exercise:\n\n1. **Calorie deficit** - Eat slightly less than you burn\n2. **Avoid processed foods** - Stick to whole foods\n3. **Walk 10k steps daily** - Simple but powerful\n4. **No sugary drinks** - Water, green tea, black coffee\n5. **Track your meals** - Awareness = control\n\nCreate a 'Healthy Eating' habit in your tasks. You've got this!";
+  }
+
+  // Study & Learning
+  if (lowerMessage.includes('study') || lowerMessage.includes('learn') || lowerMessage.includes('exam') || lowerMessage.includes('read') || lowerMessage.includes('book')) {
+    return "📚 Smart studying beats long studying:\n\n1. **Pomodoro Technique** - 25 min focus, 5 min break\n2. **Active recall** - Test yourself, don't just re-read\n3. **Teach others** - Best way to learn\n4. **Morning study** - Brain is freshest\n5. **Remove phone** - Out of sight, out of mind\n\nAdd a 'Study Session' task daily. Consistency > intensity!";
+  }
+
+  // Sleep
+  if (lowerMessage.includes('sleep') || lowerMessage.includes('wake') || lowerMessage.includes('morning') || lowerMessage.includes('early')) {
+    return "😴 Good sleep = Better performance:\n\n1. **Fixed schedule** - Same time daily, even weekends\n2. **No screens 1hr before bed** - Blue light kills sleep\n3. **Cool dark room** - Optimal for deep sleep\n4. **No caffeine after 2pm** - It stays in your system\n5. **Morning sunlight** - Resets your body clock\n\nMake 'Early Sleep' a tracked habit. Your energy will transform!";
+  }
+
+  // Stress & Mental Health
+  if (lowerMessage.includes('stress') || lowerMessage.includes('anxious') || lowerMessage.includes('worried') || lowerMessage.includes('mental') || lowerMessage.includes('depress')) {
+    return "🧘 Your mental health matters:\n\n1. **Deep breathing** - 4-7-8 technique calms instantly\n2. **Daily walk** - Nature heals the mind\n3. **Journal** - Write your thoughts out\n4. **Limit social media** - Compare less, live more\n5. **Talk to someone** - You're not alone\n\nAdd 'Mindfulness' to your daily habits. Small steps, big peace. ❤️";
+  }
+
+  // Productivity
+  if (lowerMessage.includes('productive') || lowerMessage.includes('work') || lowerMessage.includes('task') || lowerMessage.includes('time')) {
+    return "⚡ Productivity tips that actually work:\n\n1. **MIT First** - Do Most Important Task first\n2. **Time blocking** - Schedule everything\n3. **2-minute rule** - Quick tasks = do now\n4. **Batch similar tasks** - Less context switching\n5. **End-of-day review** - Plan tomorrow tonight\n\nUse FITOX to track your tasks. Small wins build momentum!";
+  }
+
+  // Goals
+  if (lowerMessage.includes('goal') || lowerMessage.includes('target') || lowerMessage.includes('achieve') || lowerMessage.includes('success')) {
+    return "🎯 Turn dreams into reality:\n\n1. **Be specific** - 'Lose 5kg' not 'lose weight'\n2. **Break it down** - Big goals → small daily tasks\n3. **Track progress** - What gets measured gets done\n4. **Celebrate wins** - Motivation fuel\n5. **Review weekly** - Adjust and keep going\n\nAdd your goals as tasks in FITOX. Let's make it happen! 🚀";
+  }
   
-  // Default response
-  return coachResponses[Math.floor(Math.random() * coachResponses.length)];
+  // Default - more helpful response
+  return "Great question! 💡 I'm here to help with:\n\n• **Fitness** - Workouts, body building, weight loss\n• **Habits** - Building routines that stick\n• **Productivity** - Getting more done\n• **Study tips** - Learning effectively\n• **Mental wellness** - Stress, sleep, balance\n\nTry asking me something like:\n- 'How to build muscle?'\n- 'Tips for better sleep'\n- 'How to stay focused?'\n\nWhat would you like help with?";
 };
