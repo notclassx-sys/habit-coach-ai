@@ -63,24 +63,26 @@ const App = () => {
         <Sonner />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<DashboardPage user={user} tasks={tasks} onAddTask={() => setAddTaskModalOpen(true)} />} />
+            <Route path="/" element={user ? <DashboardPage user={user} tasks={tasks} onAddTask={() => setAddTaskModalOpen(true)} /> : <AuthPage onLogin={handleLogin} />} />
             <Route path="/tasks" element={
-              <TasksPage 
-                tasks={tasks} 
-                onAddTask={handleAddTask}
-                onUpdateTask={handleUpdateTask}
-                onDeleteTask={handleDeleteTask}
-                onToggleStatus={handleToggleStatus}
-                addModalOpen={addTaskModalOpen}
-                setAddModalOpen={setAddTaskModalOpen}
-              />
+              user ? (
+                <TasksPage 
+                  tasks={tasks} 
+                  onAddTask={handleAddTask}
+                  onUpdateTask={handleUpdateTask}
+                  onDeleteTask={handleDeleteTask}
+                  onToggleStatus={handleToggleStatus}
+                  addModalOpen={addTaskModalOpen}
+                  setAddModalOpen={setAddTaskModalOpen}
+                />
+              ) : <AuthPage onLogin={handleLogin} />
             } />
-            <Route path="/chat" element={<ChatPage messages={chatMessages} onSendMessage={handleSendMessage} />} />
-            <Route path="/profile" element={<ProfilePage user={user} tasks={tasks} onLogout={handleLogout} />} />
+            <Route path="/chat" element={user ? <ChatPage messages={chatMessages} onSendMessage={handleSendMessage} /> : <AuthPage onLogin={handleLogin} />} />
+            <Route path="/profile" element={user ? <ProfilePage user={user} tasks={tasks} onLogout={handleLogout} /> : <AuthPage onLogin={handleLogin} />} />
             <Route path="/auth" element={<AuthPage onLogin={handleLogin} />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-          <BottomNav user={user} />
+          {user && <BottomNav user={user} />}
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>

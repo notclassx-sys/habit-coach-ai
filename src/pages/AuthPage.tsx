@@ -220,17 +220,6 @@ export function AuthPage({ onLogin }: AuthPageProps) {
             </TabsContent>
           </Tabs>
         </div>
-
-        {/* Continue as Guest */}
-        <div className="text-center">
-          <Button 
-            variant="ghost" 
-            onClick={() => navigate('/')}
-            className="text-muted-foreground hover:text-foreground"
-          >
-            Continue as Guest
-          </Button>
-        </div>
       </div>
     </div>
   );
