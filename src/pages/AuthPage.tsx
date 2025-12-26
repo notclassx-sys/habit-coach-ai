@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Mail, Lock, User as UserIcon, ArrowRight, Sparkles } from 'lucide-react';
+import { Mail, Lock, User as UserIcon, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { toast } from 'sonner';
 import { User } from '@/types';
+import fitoxLogo from '@/assets/fitox-logo.jpg';
 
 interface AuthPageProps {
   onLogin: (user: User) => void;
@@ -102,10 +103,11 @@ export function AuthPage({ onLogin }: AuthPageProps) {
       <div className="w-full max-w-md space-y-8">
         {/* Logo & Header */}
         <div className="text-center space-y-2">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-accent mb-4">
-            <Sparkles className="w-8 h-8 text-primary-foreground" />
-          </div>
-          <h1 className="font-display text-4xl font-bold text-gradient-primary">FITOX</h1>
+          <img 
+            src={fitoxLogo} 
+            alt="FITOX Logo" 
+            className="w-32 h-32 mx-auto rounded-2xl object-cover mb-4"
+          />
           <p className="text-muted-foreground">Build habits. Track progress. Stay motivated.</p>
         </div>
 
