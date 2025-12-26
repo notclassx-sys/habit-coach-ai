@@ -132,8 +132,8 @@ export function TaskTable({ tasks, onToggleStatus, onEditTask, onDeleteTask }: T
 
       {/* Table */}
       <div className="rounded-xl border border-border/50 overflow-hidden glass">
-        <div className="overflow-x-auto">
-          <Table>
+        <div className="overflow-x-auto scrollbar-hide w-full">
+          <Table className="min-w-[600px]">
             <TableHeader>
               <TableRow className="border-border/50 hover:bg-transparent">
                 <TableHead className="w-12">✔</TableHead>

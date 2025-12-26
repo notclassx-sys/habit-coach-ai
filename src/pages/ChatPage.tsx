@@ -8,7 +8,7 @@ interface ChatPageProps {
 
 export function ChatPage({ messages, onSendMessage }: ChatPageProps) {
   return (
-    <div className="h-[calc(100vh-4rem)] pb-16">
+    <div className="h-[calc(100vh-5rem)] pb-20 overflow-x-hidden">
       <ChatBot messages={messages} onSendMessage={onSendMessage} />
     </div>
   );
