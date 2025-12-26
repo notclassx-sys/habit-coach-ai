@@ -1,9 +1,9 @@
 {
   "name": "FITOX",
   "short_name": "FITOX",
-  "description": "Build habits, track progress with AI",
   "start_url": "/",
   "display": "standalone",
+  "display_override": ["standalone"],
   "background_color": "#000000",
   "theme_color": "#000000",
   "orientation": "portrait",
