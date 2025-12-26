@@ -30,6 +30,7 @@ export function EditTaskModal({ open, onOpenChange, task, onUpdateTask }: EditTa
   const [category, setCategory] = useState<Task['category']>(task?.category || 'Personal');
   const [priority, setPriority] = useState<Task['priority']>(task?.priority || 'Medium');
   const [dueDate, setDueDate] = useState(task?.dueDate || new Date().toISOString().split('T')[0]);
+  const [timeSlot, setTimeSlot] = useState(task?.timeSlot || '09:00');
 
   // Update form when task changes
   useState(() => {
@@ -38,6 +39,7 @@ export function EditTaskModal({ open, onOpenChange, task, onUpdateTask }: EditTa
       setCategory(task.category);
       setPriority(task.priority);
       setDueDate(task.dueDate);
+      setTimeSlot(task.timeSlot || '09:00');
     }
   });
 
@@ -52,6 +54,7 @@ export function EditTaskModal({ open, onOpenChange, task, onUpdateTask }: EditTa
       category,
       priority,
       dueDate,
+      timeSlot,
     });
 
     onOpenChange(false);
@@ -109,15 +112,28 @@ export function EditTaskModal({ open, onOpenChange, task, onUpdateTask }: EditTa
             </div>
           </div>
           
-          <div className="space-y-2">
-            <Label htmlFor="edit-dueDate">Due Date</Label>
-            <Input
-              id="edit-dueDate"
-              type="date"
-              value={dueDate}
-              onChange={(e) => setDueDate(e.target.value)}
-              className="bg-secondary/50 border-border/50"
-            />
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label htmlFor="edit-dueDate">Due Date</Label>
+              <Input
+                id="edit-dueDate"
+                type="date"
+                value={dueDate}
+                onChange={(e) => setDueDate(e.target.value)}
+                className="bg-secondary/50 border-border/50"
+              />
+            </div>
+            
+            <div className="space-y-2">
+              <Label htmlFor="edit-timeSlot">Time</Label>
+              <Input
+                id="edit-timeSlot"
+                type="time"
+                value={timeSlot}
+                onChange={(e) => setTimeSlot(e.target.value)}
+                className="bg-secondary/50 border-border/50"
+              />
+            </div>
           </div>
           
           <div className="flex gap-3 pt-2">
