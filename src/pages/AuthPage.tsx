@@ -99,8 +99,8 @@ export function AuthPage({ onLogin }: AuthPageProps) {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-4 pb-20">
-      <div className="w-full max-w-md space-y-8">
+    <div className="min-h-screen flex flex-col items-center justify-center px-4 py-8 overflow-x-hidden">
+      <div className="w-full max-w-md space-y-6">
         {/* Logo & Header */}
         <div className="text-center space-y-2">
           <img 

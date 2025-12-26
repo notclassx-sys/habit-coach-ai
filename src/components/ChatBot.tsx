@@ -60,7 +60,7 @@ export function ChatBot({ messages, onSendMessage }: ChatBotProps) {
   };
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full overflow-x-hidden">
       {/* Header */}
       <div className="flex items-center gap-3 p-4 border-b border-border/50">
         <div className="relative">

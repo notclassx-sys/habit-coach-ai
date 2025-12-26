@@ -41,8 +41,8 @@ export function DashboardPage({ user, tasks, onAddTask }: DashboardPageProps) {
   const quote = useMemo(() => getRandomQuote(), []);
 
   return (
-    <div className="min-h-screen pb-24 px-4 pt-6">
-      <div className="max-w-2xl mx-auto space-y-6">
+    <div className="min-h-screen pb-24 px-4 pt-6 overflow-x-hidden">
+      <div className="w-full max-w-2xl mx-auto space-y-6">
         {/* Header */}
         <div className="space-y-1">
           <p className="text-muted-foreground text-sm">

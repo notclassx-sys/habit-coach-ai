@@ -33,8 +33,8 @@ export function ProfilePage({ user, tasks, onLogout }: ProfilePageProps) {
   }, [tasks, user]);
 
   return (
-    <div className="min-h-screen pb-24 px-4 pt-6">
-      <div className="max-w-lg mx-auto space-y-6">
+    <div className="min-h-screen pb-24 px-4 pt-6 overflow-x-hidden">
+      <div className="w-full max-w-lg mx-auto space-y-6">
         {/* Header */}
         <div className="text-center space-y-4">
           {/* Avatar */}
