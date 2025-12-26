@@ -29,6 +29,7 @@ export function AddTaskModal({ open, onOpenChange, onAddTask }: AddTaskModalProp
   const [category, setCategory] = useState<Task['category']>('Personal');
   const [priority, setPriority] = useState<Task['priority']>('Medium');
   const [dueDate, setDueDate] = useState(new Date().toISOString().split('T')[0]);
+  const [timeSlot, setTimeSlot] = useState('09:00');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -40,6 +41,7 @@ export function AddTaskModal({ open, onOpenChange, onAddTask }: AddTaskModalProp
       category,
       priority,
       dueDate,
+      timeSlot,
       status: false,
     });
 
@@ -48,6 +50,7 @@ export function AddTaskModal({ open, onOpenChange, onAddTask }: AddTaskModalProp
     setCategory('Personal');
     setPriority('Medium');
     setDueDate(new Date().toISOString().split('T')[0]);
+    setTimeSlot('09:00');
     onOpenChange(false);
   };
 
@@ -106,15 +109,28 @@ export function AddTaskModal({ open, onOpenChange, onAddTask }: AddTaskModalProp
             </div>
           </div>
           
-          <div className="space-y-2">
-            <Label htmlFor="dueDate">Due Date</Label>
-            <Input
-              id="dueDate"
-              type="date"
-              value={dueDate}
-              onChange={(e) => setDueDate(e.target.value)}
-              className="bg-secondary/50 border-border/50"
-            />
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label htmlFor="dueDate">Due Date</Label>
+              <Input
+                id="dueDate"
+                type="date"
+                value={dueDate}
+                onChange={(e) => setDueDate(e.target.value)}
+                className="bg-secondary/50 border-border/50"
+              />
+            </div>
+            
+            <div className="space-y-2">
+              <Label htmlFor="timeSlot">Time</Label>
+              <Input
+                id="timeSlot"
+                type="time"
+                value={timeSlot}
+                onChange={(e) => setTimeSlot(e.target.value)}
+                className="bg-secondary/50 border-border/50"
+              />
+            </div>
           </div>
           
           <div className="flex gap-3 pt-2">

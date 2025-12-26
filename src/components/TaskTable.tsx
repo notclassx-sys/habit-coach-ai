@@ -136,8 +136,8 @@ export function TaskTable({ tasks, onToggleStatus, onEditTask, onDeleteTask }: T
           <Table className="min-w-[600px]">
             <TableHeader>
               <TableRow className="border-border/50 hover:bg-transparent">
-                <TableHead className="w-12">✔</TableHead>
-                <TableHead>Task Name</TableHead>
+                <TableHead className="w-10">✔</TableHead>
+                <TableHead>Task</TableHead>
                 <TableHead>Category</TableHead>
                 <TableHead 
                   className="cursor-pointer hover:text-foreground transition-colors"
@@ -155,6 +155,7 @@ export function TaskTable({ tasks, onToggleStatus, onEditTask, onDeleteTask }: T
                     Date <SortIcon field="dueDate" />
                   </div>
                 </TableHead>
+                <TableHead>Time</TableHead>
                 <TableHead>Status</TableHead>
                 <TableHead className="text-right">Actions</TableHead>
               </TableRow>
@@ -162,7 +163,7 @@ export function TaskTable({ tasks, onToggleStatus, onEditTask, onDeleteTask }: T
             <TableBody>
               {filteredAndSortedTasks.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={7} className="h-32 text-center text-muted-foreground">
+                  <TableCell colSpan={8} className="h-32 text-center text-muted-foreground">
                     No tasks found. Add your first habit!
                   </TableCell>
                 </TableRow>
@@ -201,11 +202,14 @@ export function TaskTable({ tasks, onToggleStatus, onEditTask, onDeleteTask }: T
                         {task.priority}
                       </Badge>
                     </TableCell>
-                    <TableCell className="text-muted-foreground">
+                    <TableCell className="text-muted-foreground text-sm">
                       {new Date(task.dueDate).toLocaleDateString('en-US', {
                         month: 'short',
                         day: 'numeric',
                       })}
+                    </TableCell>
+                    <TableCell className="text-muted-foreground text-sm">
+                      {task.timeSlot || '—'}
                     </TableCell>
                     <TableCell>
                       <Badge 

@@ -3,6 +3,7 @@ import { CheckCircle, Clock, Flame, TrendingUp } from 'lucide-react';
 import { StatsCard } from '@/components/StatsCard';
 import { QuoteCard } from '@/components/QuoteCard';
 import { QuickActions } from '@/components/QuickActions';
+import { Analytics } from '@/components/Analytics';
 import { Task, User } from '@/types';
 import { getRandomQuote } from '@/lib/motivationalQuotes';
 import { useMemo } from 'react';
@@ -58,7 +59,7 @@ export function DashboardPage({ user, tasks, onAddTask }: DashboardPageProps) {
         <QuoteCard quote={quote} />
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-3">
           <StatsCard
             title="Completed Today"
             value={stats.completedToday}
@@ -69,7 +70,7 @@ export function DashboardPage({ user, tasks, onAddTask }: DashboardPageProps) {
           <StatsCard
             title="Pending"
             value={stats.pendingToday}
-            subtitle="tasks remaining"
+            subtitle="remaining"
             icon={Clock}
             variant="accent"
           />
@@ -87,6 +88,9 @@ export function DashboardPage({ user, tasks, onAddTask }: DashboardPageProps) {
             icon={TrendingUp}
           />
         </div>
+
+        {/* Analytics */}
+        <Analytics tasks={tasks} />
 
         {/* Quick Actions */}
         <QuickActions
