@@ -10,6 +10,7 @@ import { TasksPage } from "@/pages/TasksPage";
 import { ChatPage } from "@/pages/ChatPage";
 import { ProfilePage } from "@/pages/ProfilePage";
 import { AuthPage } from "@/pages/AuthPage";
+import { ResetPasswordPage } from "@/pages/ResetPasswordPage";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { User, Task, ChatMessage } from "@/types";
 import { supabase } from "@/integrations/supabase/client";
@@ -242,6 +243,7 @@ const App = () => {
             <Route path="/chat" element={user ? <ChatPage messages={chatMessages} onSendMessage={handleSendMessage} /> : <AuthPage onLogin={handleLogin} />} />
             <Route path="/profile" element={user ? <ProfilePage user={user} tasks={tasks} onLogout={handleLogout} /> : <AuthPage onLogin={handleLogin} />} />
             <Route path="/auth" element={<AuthPage onLogin={handleLogin} />} />
+            <Route path="/reset-password" element={<ResetPasswordPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           {user && <BottomNav user={user} />}
