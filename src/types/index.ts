@@ -10,10 +10,10 @@ export interface Task {
   id: string;
   userId: string;
   title: string;
-  category: 'Health' | 'Study' | 'Work' | 'Personal';
-  priority: 'Low' | 'Medium' | 'High';
-  dueDate: string;
-  timeSlot: string;
+  category: string;
+  priority: 'low' | 'medium' | 'high';
+  dueDate?: string;
+  timeSlot?: string;
   status: boolean;
   createdAt: string;
 }

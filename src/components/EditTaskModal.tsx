@@ -27,8 +27,8 @@ interface EditTaskModalProps {
 
 export function EditTaskModal({ open, onOpenChange, task, onUpdateTask }: EditTaskModalProps) {
   const [title, setTitle] = useState(task?.title || '');
-  const [category, setCategory] = useState<Task['category']>(task?.category || 'Personal');
-  const [priority, setPriority] = useState<Task['priority']>(task?.priority || 'Medium');
+  const [category, setCategory] = useState(task?.category || 'personal');
+  const [priority, setPriority] = useState<Task['priority']>(task?.priority || 'medium');
   const [dueDate, setDueDate] = useState(task?.dueDate || new Date().toISOString().split('T')[0]);
   const [timeSlot, setTimeSlot] = useState(task?.timeSlot || '09:00');
 
@@ -89,10 +89,10 @@ export function EditTaskModal({ open, onOpenChange, task, onUpdateTask }: EditTa
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="Health">🏃 Health</SelectItem>
-                  <SelectItem value="Study">📚 Study</SelectItem>
-                  <SelectItem value="Work">💼 Work</SelectItem>
-                  <SelectItem value="Personal">🎯 Personal</SelectItem>
+                  <SelectItem value="health">🏃 Health</SelectItem>
+                  <SelectItem value="study">📚 Study</SelectItem>
+                  <SelectItem value="work">💼 Work</SelectItem>
+                  <SelectItem value="personal">🎯 Personal</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -104,9 +104,9 @@ export function EditTaskModal({ open, onOpenChange, task, onUpdateTask }: EditTa
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="Low">🟢 Low</SelectItem>
-                  <SelectItem value="Medium">🟡 Medium</SelectItem>
-                  <SelectItem value="High">🔴 High</SelectItem>
+                  <SelectItem value="low">🟢 Low</SelectItem>
+                  <SelectItem value="medium">🟡 Medium</SelectItem>
+                  <SelectItem value="high">🔴 High</SelectItem>
                 </SelectContent>
               </Select>
             </div>
