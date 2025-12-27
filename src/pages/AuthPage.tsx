@@ -6,11 +6,11 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { toast } from 'sonner';
-import { User } from '@/types';
+import { supabase } from '@/integrations/supabase/client';
 import fitoxLogo from '@/assets/fitox-logo.jpg';
 
 interface AuthPageProps {
-  onLogin: (user: User) => void;
+  onLogin: () => void;
 }
 
 export function AuthPage({ onLogin }: AuthPageProps) {
@@ -36,22 +36,25 @@ export function AuthPage({ onLogin }: AuthPageProps) {
     
     setIsLoading(true);
     
-    // Simulate login delay
-    setTimeout(() => {
-      // Check if user exists in localStorage
-      const existingUsers = JSON.parse(localStorage.getItem('fitox_users') || '[]');
-      const user = existingUsers.find((u: User) => u.email === loginEmail);
-      
-      if (user) {
-        onLogin(user);
-        toast.success('Welcome back!');
-        navigate('/');
+    const { error } = await supabase.auth.signInWithPassword({
+      email: loginEmail,
+      password: loginPassword,
+    });
+
+    if (error) {
+      if (error.message.includes('Invalid login credentials')) {
+        toast.error('Invalid email or password');
       } else {
-        toast.error('User not found. Please sign up first.');
+        toast.error(error.message);
       }
-      
       setIsLoading(false);
-    }, 1000);
+      return;
+    }
+
+    toast.success('Welcome back!');
+    onLogin();
+    navigate('/');
+    setIsLoading(false);
   };
 
   const handleSignup = async (e: React.FormEvent) => {
@@ -69,33 +72,33 @@ export function AuthPage({ onLogin }: AuthPageProps) {
     
     setIsLoading(true);
     
-    // Simulate signup delay
-    setTimeout(() => {
-      const existingUsers = JSON.parse(localStorage.getItem('fitox_users') || '[]');
-      
-      if (existingUsers.some((u: User) => u.email === signupEmail)) {
-        toast.error('Email already registered');
-        setIsLoading(false);
-        return;
+    const redirectUrl = `${window.location.origin}/`;
+
+    const { error } = await supabase.auth.signUp({
+      email: signupEmail,
+      password: signupPassword,
+      options: {
+        emailRedirectTo: redirectUrl,
+        data: {
+          full_name: signupName,
+        }
       }
-      
-      const newUser: User = {
-        id: crypto.randomUUID(),
-        name: signupName,
-        email: signupEmail,
-        profileImage: '',
-        createdAt: new Date().toISOString(),
-      };
-      
-      existingUsers.push(newUser);
-      localStorage.setItem('fitox_users', JSON.stringify(existingUsers));
-      
-      onLogin(newUser);
-      toast.success('Account created successfully!');
-      navigate('/');
-      
+    });
+
+    if (error) {
+      if (error.message.includes('already registered')) {
+        toast.error('Email already registered. Please sign in.');
+      } else {
+        toast.error(error.message);
+      }
       setIsLoading(false);
-    }, 1000);
+      return;
+    }
+
+    toast.success('Account created successfully!');
+    onLogin();
+    navigate('/');
+    setIsLoading(false);
   };
 
   return (
